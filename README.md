@@ -9,7 +9,7 @@
 
 Laravel-uptime-monitor is a powerful, easy to configure uptime monitor. It will notify you when your site is down (and when it comes back up). You can also be notified a few days before an SSL certificate on one of your sites expires. Under the hood, the package leverages Laravel native notifications, so it's easy to use Slack, Telegram or your preferred notification provider.
 
-You'll find extensive documentation on https://docs.spatie.be/laravel-uptime-monitor/v2. It includes detailed info on how to install and use the package.
+You'll find extensive documentation on [https://docs.spatie.be/laravel-uptime-monitor]. It includes detailed info on how to install and use the package.
 
 If you're not familiar with Laravel, but still want to use our uptime monitor, take a look at the [uptime-monitor-app](https://github.com/spatie/uptime-monitor-app) repo which contains a stand alone version of this package.
 
@@ -139,17 +139,9 @@ return [
 Currently this package does not offer an API, if you need that take a look at [this package](https://github.com/LKDevelopment/laravel-uptime-monitor-api).
 
 ## Documentation
-You'll find the documentation on [https://docs.spatie.be/laravel-uptime-monitor/v2](https://docs.spatie.be/laravel-uptime-monitor/v2). It includes detailed info on how to install and use the package.
+You'll find the documentation on [https://docs.spatie.be/laravel-uptime-monitor]. It includes detailed info on how to install and use the package.
 
 Find yourself stuck using the package? Found a bug? Do you have general questions or suggestions for improving the uptime monitor? Feel free to [create an issue on GitHub](https://github.com/spatie/laravel-uptime-monitor/issues), we'll try to address it as soon as possible.
-
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-The best postcards will get published on the open source page on our website.
 
 ## Changelog
 
@@ -157,14 +149,8 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Testing
 
-To run the tests you'll have to start the included node based server first in a separate terminal window.
+To run the tests, issue this command:
 
-```bash
-cd tests/server
-./start_server.sh
-```
-
-With the server running, you can start testing.
 ```bash
 vendor/bin/phpunit
 ```
@@ -177,14 +163,28 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-## About Spatie
+## Support us
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[https://docs.spatie.be/laravel-uptime-monitor]: https://docs.spatie.be/laravel-uptime-monitor/v3

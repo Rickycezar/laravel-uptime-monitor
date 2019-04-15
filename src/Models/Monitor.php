@@ -31,6 +31,18 @@ class Monitor extends Model
         'certificate_check_enabled' => 'boolean',
     ];
 
+    public function getUptimeCheckAdditionalHeadersAttribute($additionalHeaders)
+    {
+        return $additionalHeaders
+            ? json_decode($additionalHeaders, true)
+            : [];
+    }
+
+    public function setUptimeCheckAdditionalHeadersAttribute(array $additionalHeaders)
+    {
+        $this->attributes['uptime_check_additional_headers'] = json_encode($additionalHeaders);
+    }
+
     public function scopeEnabled($query)
     {
         return $query
@@ -103,7 +115,7 @@ class Monitor extends Model
         return $this;
     }
 
-    protected static function alreadyExists(Monitor $monitor): bool
+    protected static function alreadyExists(self $monitor): bool
     {
         $query = static::where('url', $monitor->url);
 

@@ -2,6 +2,51 @@
 
 All notable changes to `laravel-uptime-monitor` will be documented in this file
 
+## Unreleased
+
+## 3.4.0 - 2019-03-03
+### Changed
+* Dropped support for Laravel 5.7
+* Added support for Laravel 5.8, PHPUnit 8
+* PHPUnit minimum version is now 7.5
+
+## 3.3.4 - 2018-10-30
+
+- fix if statement to be if not certificate applies to url
+
+## 3.3.3 - 2018-10-20
+
+- fix for PHP 7.3
+
+## 3.3.2 - 2018-10-18
+
+- fix for checking SSL
+
+## 3.3.1 - 2018-08-27
+
+- add support for Laravel 5.7
+
+## 3.3.0 - 2018-03-13
+
+- add option to force run all monitors
+
+## 3.2.1 - 2018-02-08
+
+- add support for L5.6
+
+## 3.2.0 - 2017-12-20
+
+- add ability for monitors to have their own response checkers
+
+## 3.1.0 - 2017-12-11
+
+- add ability to send payload to verify uptime
+
+## 3.0.0 - 2017-08-31
+
+- add support for Laravel 5.5, drop support for Laravel 5.4
+- renamed config file from `laravel-uptime-monitor` to `uptime-monitor`
+
 ## 2.2.0 - 2017-03-13
 
 - add `retry_connection_after_milliseconds` to config file

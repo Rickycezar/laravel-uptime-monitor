@@ -3,7 +3,6 @@
 namespace Spatie\UptimeMonitor;
 
 use Generator;
-use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
 use GuzzleHttp\Promise\EachPromise;
 use Psr\Http\Message\ResponseInterface;
@@ -19,7 +18,7 @@ class MonitorCollection extends Collection
         $this->resetItemKeys();
 
         (new EachPromise($this->getPromises(), [
-            'concurrency' => config('laravel-uptime-monitor.uptime_check.concurrent_checks'),
+            'concurrency' => config('uptime-monitor.uptime_check.concurrent_checks'),
             'fulfilled' => function (ResponseInterface $response, $index) {
                 $monitor = $this->getMonitorAtIndex($index);
 
@@ -40,30 +39,35 @@ class MonitorCollection extends Collection
 
     protected function getPromises(): Generator
     {
-        // client headers
-        $headers = array_merge(
-            ['User-Agent' => config('laravel-uptime-monitor.uptime_check.user_agent')],
-            config('laravel-uptime-monitor.uptime_check.additional_headers') ?? []
-        );
-
         $client = GuzzleFactory::make(
-            compact('headers'),
-            config('laravel-uptime-monitor.uptime-check.retry_connection_after_milliseconds', 100)
+            [],
+            config('uptime-monitor.uptime-check.retry_connection_after_milliseconds', 100)
         );
 
         foreach ($this->items as $monitor) {
             ConsoleOutput::info("Checking {$monitor->url}");
+
             $promise = $client->requestAsync(
                 $monitor->uptime_check_method,
                 $monitor->url,
-                [
-                    'connect_timeout' => config('laravel-uptime-monitor.uptime_check.timeout_per_site'),
-                    'headers' => $headers,
-                ]
+                array_filter([
+                    'connect_timeout' => config('uptime-monitor.uptime_check.timeout_per_site'),
+                    'headers' => $this->promiseHeaders($monitor),
+                    'body' => $monitor->uptime_check_payload,
+                ])
             );
 
             yield $promise;
         }
+    }
+
+    private function promiseHeaders(Monitor $monitor)
+    {
+        return collect([])
+            ->merge(['User-Agent' => config('uptime-monitor.uptime_check.user_agent')])
+            ->merge(config('uptime-monitor.uptime_check.additional_headers') ?? [])
+            ->merge($monitor->uptime_check_additional_headers)
+            ->toArray();
     }
 
     /**
